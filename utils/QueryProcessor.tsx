@@ -1,3 +1,16 @@
+function isSquareAndCube(number: number) {
+  // Calculate square root and cube root
+  const squareRoot = Math.sqrt(number);
+  const cubeRoot = Math.cbrt(number);
+
+  // Check if both roots are integers
+  if (Number.isInteger(squareRoot) && Number.isInteger(cubeRoot)) {
+      return true;
+  } else {
+      return false;
+  }
+}
+
 export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("shakespeare")) {
     return (
@@ -45,6 +58,20 @@ export default function QueryProcessor(query: string): string {
     let res = parseInt(num1) * parseInt(num2);
     return (
       res.toString()
+    );
+  }
+
+  if (query.toLowerCase().includes("both a square and a cube")) {
+    let replaced = query.replace( /[^\d,]/g, '' );
+    let arr = replaced.split(",");
+    let res = "";
+    for (let i = 0; i < arr.length; i++) {
+      if(isSquareAndCube(parseInt(arr[i])))
+        res = res + arr[i] + ", ";
+    }
+    let last = res.substring(0, res.length-2)
+    return (
+      last
     );
   }
 
