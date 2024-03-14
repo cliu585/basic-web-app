@@ -67,6 +67,16 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+  if (query.toLowerCase().includes(" power of ")) {
+    let arr = query.split(" power of ");
+    let str1 = arr[0].replace( /[^\d]/g, '' );
+    let str2 = arr[1].replace( /[^\d]/g, '' );
+    let res = Math.pow(parseInt(str1), parseInt(str2));
+    return (
+      res.toString()
+    );
+  }
+
   if (query.toLowerCase().includes(" multiplied by ")) {
     let arr = query.split(" multiplied by ");
     let num1 = arr[0].replace( /[^\d]/g, '' );
