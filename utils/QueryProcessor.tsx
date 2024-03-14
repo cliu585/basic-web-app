@@ -44,9 +44,11 @@ export default function QueryProcessor(query: string): string {
 
   if (query.toLowerCase().includes(" plus ")) {
     let arr = query.split(" plus ");
-    let num1 = arr[0].replace( /[^\d]/g, '' );
-    let num2 = arr[1].replace( /[^\d]/g, '' );
-    let res = parseInt(num1) + parseInt(num2);
+    let res = 0;
+    for (let i = 0; i < arr.length; i++) {
+      let n = arr[i].replace( /[^\d]/g, '' );
+      res += parseInt(n)
+    }
     return (
       res.toString()
     );
