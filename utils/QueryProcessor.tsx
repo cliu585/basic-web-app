@@ -29,11 +29,20 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes(" plus ")) {
-    let i = query.indexOf(" plus ");
     let arr = query.split(" plus ");
     let num1 = arr[0].replace( /[^\d]/g, '' );
     let num2 = arr[1].replace( /[^\d]/g, '' );
     let res = parseInt(num1) + parseInt(num2);
+    return (
+      res.toString()
+    );
+  }
+
+  if (query.toLowerCase().includes(" multiplied by ")) {
+    let arr = query.split(" multiplied by ");
+    let num1 = arr[0].replace( /[^\d]/g, '' );
+    let num2 = arr[1].replace( /[^\d]/g, '' );
+    let res = parseInt(num1) * parseInt(num2);
     return (
       res.toString()
     );
