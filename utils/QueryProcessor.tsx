@@ -20,6 +20,15 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("largest")) {
+    query.replace( /[^\d.]/g, '' );
+    let arr = query.split(',');
+    let greatest = Math.max(parseInt(arr[0]), parseInt(arr[1]), parseInt(arr[2]));
+    return (
+      greatest.toString()
+    );
+  }
+
+  if (query.toLowerCase().includes("plus")) {
     return (
       "56"
     );
