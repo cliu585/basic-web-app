@@ -5,6 +5,13 @@ function isSquareAndCube(number: number) {
   return isSquare && isCube;
 }
 
+function isPrime(number: number) {
+  for(let i = 2, s = Math.sqrt(number); i <= s; i++) {
+      if(number % i === 0) return false;
+  }
+  return number > 1;
+}
+
 export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("shakespeare")) {
     return (
@@ -61,6 +68,20 @@ export default function QueryProcessor(query: string): string {
     let res = "";
     for (let i = 0; i < arr.length; i++) {
       if(isSquareAndCube(parseInt(arr[i])))
+        res = res + arr[i] + ", ";
+    }
+    let last = res.substring(0, res.length-2)
+    return (
+      last
+    );
+  }
+
+  if (query.toLowerCase().includes("prime")) {
+    let replaced = query.replace( /[^\d,]/g, '' );
+    let arr = replaced.split(",");
+    let res = "";
+    for (let i = 0; i < arr.length; i++) {
+      if(isPrime(parseInt(arr[i])))
         res = res + arr[i] + ", ";
     }
     let last = res.substring(0, res.length-2)
