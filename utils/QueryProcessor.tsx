@@ -1,14 +1,8 @@
 function isSquareAndCube(number: number) {
-  // Calculate square root and cube root
-  const squareRoot = Math.sqrt(number);
-  const cubeRoot = Math.cbrt(number);
+  let isSquare = number > 0 && Math.sqrt(number) % 1 === 0;
+  let isCube = number > 0 && Math.cbrt(number) % 1 === 0;
 
-  // Check if both roots are integers
-  if (Number.isInteger(squareRoot) && Number.isInteger(cubeRoot)) {
-      return true;
-  } else {
-      return false;
-  }
+  return isSquare && isCube;
 }
 
 export default function QueryProcessor(query: string): string {
