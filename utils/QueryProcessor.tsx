@@ -54,6 +54,19 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+  if (query.toLowerCase().includes(" minus ")) {
+    let arr = query.split(" minus ");
+    let str1 = arr[0].replace( /[^\d]/g, '' );
+    let res = parseInt(str1);
+    for (let i = 1; i < arr.length; i++) {
+      let n = arr[i].replace( /[^\d]/g, '' );
+      res -= parseInt(n)
+    }
+    return (
+      res.toString()
+    );
+  }
+
   if (query.toLowerCase().includes(" multiplied by ")) {
     let arr = query.split(" multiplied by ");
     let num1 = arr[0].replace( /[^\d]/g, '' );
